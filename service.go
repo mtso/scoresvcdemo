@@ -15,7 +15,7 @@ type Service interface {
 // Data model
 type Score struct {
 	Id string `json:"id"`
-	Value int `json:"highscore"`
+	Value int `json:"value"`
 }
 
 // in-memory mock persistence
