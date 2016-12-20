@@ -45,7 +45,7 @@ func MakeHTTPHandler(ctx context.Context, svc Service, logger log.Logger) http.H
 	))
 	r.Methods("GET").Path("/{id}").Handler(httptransport.NewServer(
 		ctx,
-		e.PostScoreEndpoint,
+		e.GetScoreEndpoint,
 		decodeGetScoreRequest,
 		encodeResponse,
 		options...,
