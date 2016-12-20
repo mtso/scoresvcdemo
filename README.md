@@ -7,8 +7,8 @@ Builds on lessons learned from ulog and addsvcdemo
 
 1. Create Service interface
 2. Build endpoints
-   ==wip==
 3. Add transports
+   ==wip==
 4. Add middlewares
 5. Combine into cmd/scoresvcdemo/main.go
 
