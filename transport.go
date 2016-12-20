@@ -1,12 +1,9 @@
 package scoresvcdemo
 
 import (
-	"bytes"
 	"encoding/json"
 	"errors"
 	"net/http"
-
-	"net/url"
 
 	"github.com/gorilla/mux"
 	"golang.org/x/net/context"
@@ -76,7 +73,7 @@ func decodeGetScoreRequest(_ context.Context, r *http.Request) (request interfac
 // implemented by all concrete response types that may contain errors
 // used by response encoder
 // TODO: read comment in endpoints.go
-type error interface {
+type errorer interface {
 	error() error
 }
 

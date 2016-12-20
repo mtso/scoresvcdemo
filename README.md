@@ -2,7 +2,14 @@
 
 Demo microservice that copies the `github.com/go-kit/go/examples/profilesvc` service architecture.
 
+## Sample curls
+
+    curl -X POST -d '{"id":"kingcandy","score":20}' localhost:8080/
+    curl -i localhost:8080/kingcandy
+
+
 ## Process Roadmap
+
 Builds on lessons learned from ulog and addsvcdemo
 
 1. Create Service interface

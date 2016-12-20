@@ -25,25 +25,25 @@ func LoggingMiddleware(logger log.Logger) Middleware {
 	}
 }
 
-func (mw loggingMiddleware) PostScore(ctx context.Context, s Score) (Score, error) {
+func (mw loggingMiddleware) PostScore(ctx context.Context, s Score) (sc Score, err error) {
 	defer func(begin time.Time) {
 		mw.logger.Log(
 			"method", "PostScore",
 			"id", s.Id,
 			"took", time.Since(begin),
-			"err", err
+			"err", err,
 		)
 	}(time.Now())
 	return mw.next.PostScore(ctx, s)
 }
 
-func (mw loggingMiddleware) GetScore(ctx context.Context, id string) (Score, error) {
+func (mw loggingMiddleware) GetScore(ctx context.Context, id string) (sc Score, err error) {
 	defer func(begin time.Time) {
 		mw.logger.Log(
 			"method", "GetScore",
 			"id", id,
 			"took", time.Since(begin),
-			"err", err
+			"err", err,
 		)
 	}(time.Now())
 	return mw.next.GetScore(ctx, id)

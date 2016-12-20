@@ -39,10 +39,11 @@ func (svc *inmemService) PostScore(ctx context.Context, s Score) (Score, error) 
 	defer svc.Unlock()
 
 	score, ok := svc.data[s.Id]
+	// TODO: turn this into one comparison check
 	if ok && s.Value > score.Value {
-		svc.data[s.Id].Value = s.Value
+		svc.data[s.Id] = Score{ Id: s.Id, Value: s.Value }
 	} else if !ok {
-		svc.data[s.Id] = &Score{ Id: s.Id, Value: s.Value }
+		svc.data[s.Id] = Score{ Id: s.Id, Value: s.Value }
 	}
 
 	return svc.data[s.Id], nil

@@ -1,13 +1,9 @@
 package scoresvcdemo
 
 import (
-	"net/url"
-	"strings"
-
 	"golang.org/x/net/context"
 
 	"github.com/go-kit/kit/endpoint"
-	"github.com/go-kit/kit/transport/http" // aka httptransport
 )
 
 type Endpoints struct {
@@ -15,10 +11,10 @@ type Endpoints struct {
 	GetScoreEndpoint endpoint.Endpoint
 }
 
-func MakeServerEndpoints(s Service) Endpoints {
+func MakeServerEndpoints(svc Service) Endpoints {
 	return Endpoints {
-		PostScoreEndpoint:
-		GetScoreEndpoint;
+		PostScoreEndpoint: MakePostScoreEndpoint(svc),
+		GetScoreEndpoint: MakeGetScoreEndpoint(svc),
 	}
 }
 
