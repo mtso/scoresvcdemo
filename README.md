@@ -5,6 +5,7 @@ Demo microservice that copies the `github.com/go-kit/go/examples/profilesvc` ser
 ## Sample curls
 
     curl -X POST -d '{"id":"kingcandy","score":20}' localhost:8080/
+    curl -X POST -d '{"id":"kingcandy","value":20}' localhost:8080/
     curl -i localhost:8080/kingcandy
 
 
@@ -17,5 +18,8 @@ Builds on lessons learned from ulog and addsvcdemo
 3. Add transports
 4. Add middlewares
 5. Combine into cmd/scoresvcdemo/main.go
-   ==wip==
-0. Turn inmemService into a postgreService (convert in-memory persistence to database)
+
+Backlog
+
+- Turn inmemService into a postgreService (convert in-memory persistence to database)
+- Check post request decoding for valid score/value parameter

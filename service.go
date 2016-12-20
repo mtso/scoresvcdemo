@@ -1,6 +1,7 @@
 package scoresvcdemo
 
 import (
+"fmt"
 	"errors"
 	"sync"
 	"golang.org/x/net/context"
@@ -16,6 +17,7 @@ type Service interface {
 type Score struct {
 	Id string `json:"id"`
 	Value int `json:"value"`
+	// Value int `json:"score"`
 }
 
 // in-memory mock persistence
@@ -39,12 +41,20 @@ func (svc *inmemService) PostScore(ctx context.Context, s Score) (Score, error) 
 	defer svc.Unlock()
 
 	score, ok := svc.data[s.Id]
-	// TODO: turn this into one comparison check
-	if ok && s.Value > score.Value {
-		svc.data[s.Id] = Score{ Id: s.Id, Value: s.Value }
-	} else if !ok {
-		svc.data[s.Id] = Score{ Id: s.Id, Value: s.Value }
+	fmt.Println(s)
+	if !ok {
+		svc.data[s.Id] = s
 	}
+	if s.Value > score.Value {
+		svc.data[s.Id] = s
+	}
+	// score, ok := svc.data[s.Id]
+	// // TODO: turn this into one comparison check
+	// if ok && s.Value > score.Value {
+	// 	svc.data[s.Id] = Score{ Id: s.Id, Value: s.Value }
+	// } else if !ok {
+	// 	svc.data[s.Id] = Score{ Id: s.Id, Value: s.Value }
+	// }
 
 	return svc.data[s.Id], nil
 }
