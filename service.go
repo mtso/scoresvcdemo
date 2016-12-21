@@ -1,7 +1,6 @@
 package scoresvcdemo
 
 import (
-"fmt"
 	"errors"
 	"sync"
 	"golang.org/x/net/context"
@@ -16,8 +15,7 @@ type Service interface {
 // Data model
 type Score struct {
 	Id string `json:"id"`
-	Value int `json:"value"`
-	// Value int `json:"score"`
+	Value int `json:"value"` // `json:"score"`
 }
 
 // in-memory mock persistence
