@@ -41,10 +41,11 @@ func (svc *inmemService) PostScore(ctx context.Context, s Score) (Score, error) 
 	defer svc.Unlock()
 
 	score, ok := svc.data[s.Id]
-	fmt.Println(s)
+	// Create an entry if one does not exist.
 	if !ok {
-		svc.data[s.Id] = s
+		svc.data[s.Id] = s 
 	}
+	// Override the score value the input is greater
 	if s.Value > score.Value {
 		svc.data[s.Id] = s
 	}
