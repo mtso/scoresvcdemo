@@ -21,5 +21,8 @@ Builds on lessons learned from ulog and addsvcdemo
 
 Backlog
 
+- Add a GET endpoint at path `/` to return top 5 user scores, test:
+    - simulates leaderboard
+    - tests multiple HTTP methods on a single URL path
 - Turn inmemService into a postgreService (convert in-memory persistence to database)
 - Check post request decoding for valid score/value parameter
